@@ -72,6 +72,16 @@ class Field():
         n_whites = np.count_nonzero(self.field == 1)
         return n_whites / (self.shape[0]**2)
     
+    def calculate_entropy(self):
+        s = 0
+        stat_w = self.calculate_stat()
+        stat_b = 1 - stat_w
+        if stat_w > 0:
+            s -= stat_w * (np.log2(stat_w)/np.log2(2))
+        if stat_b > 0:
+            s -= stat_b * (np.log2(stat_b)/np.log2(2))
+        return s
+
 
 class Ring(Field):
     def __init__(self, field, shape, opinion_matrix):
