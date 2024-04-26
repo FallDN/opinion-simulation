@@ -77,9 +77,9 @@ class Field():
         stat_w = self.calculate_stat()
         stat_b = 1 - stat_w
         if stat_w > 0:
-            s -= stat_w * (np.log2(stat_w)/np.log2(2))
+            s -= stat_w * np.log2(stat_w)
         if stat_b > 0:
-            s -= stat_b * (np.log2(stat_b)/np.log2(2))
+            s -= stat_b * np.log2(stat_b)
         return s
 
 
